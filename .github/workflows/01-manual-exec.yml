@@ -48,6 +48,9 @@ jobs:
         run: npx cypress --version
         working-directory: ./web
 
+      - name: List files
+        run: ls -R ./web
+
       - name: rodando com electron 
         run: npx cypress run --browser=electron
         working-directory: ./web
