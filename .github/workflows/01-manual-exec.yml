@@ -34,18 +34,24 @@ jobs:
 
       - name: Instalando cypress
         run: npm install -D cypress@13.7.3
+        working-directory: ./web
 
       - name: Install Cypress binary
         run: npx cypress install
+        working-directory: ./web
 
       - name: Set permissions
         run: chmod +x node_modules/.bin/cypress
+        working-directory: ./web
 
       - name: Check Cypress version
         run: npx cypress --version
+        working-directory: ./web
 
       - name: rodando com electron 
         run: npx cypress run --browser=electron
+        working-directory: ./web
 
       - name: Generate Mochawesome Report
         run: npx mochawesome-merge ./cypress/results/*.json > ./cypress/results/report.json && npx marge ./cypress/results/report.json
+        working-directory: ./web
