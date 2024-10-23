@@ -44,11 +44,8 @@ jobs:
       - name: Check Cypress version
         run: npx cypress --version
 
-      - name: List files
-        run: cd .. && ls -R
-
       - name: rodando com electron 
-        run: npx cypress run --browser=electron
+        run: cd .. && npx cypress run --browser=electron
 
       - name: Generate Mochawesome Report
         run: npx mochawesome-merge ./cypress/results/*.json > ./cypress/results/report.json && npx marge ./cypress/results/report.json
