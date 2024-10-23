@@ -1,0 +1,51 @@
+# CI de Nível 01 - Disparo manual a partir de 1 clique
+
+# nome que vai aparecer la nas opções de pipe
+name: 'Execução Manual'
+
+# regras de disparo da execucao (triggers/gatilhos)
+# gatilho de exec manual = workflow_dispatch
+
+on:
+  workflow_dispatch:
+    
+jobs:
+
+  # descricao do job
+  e2e-tests:
+
+    # maquina que o job vai executar
+    runs-on: ['ubuntu-latest']
+
+    # passo a passo das acoes do job
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
+
+
+      - name: Instalando cypress
+        run: npm install -D cypress@13.7.3
+
+      - name: Install Cypress binary
+        run: npx cypress install
+
+      - name: Set permissions
+        run: chmod +x node_modules/.bin/cypress
+
+      - name: Check Cypress version
+        run: npx cypress --version
+
+      - name: rodando com electron 
+        run: npx cypress run --browser=electron
+
+      - name: Generate Mochawesome Report
+        run: npx mochawesome-merge ./cypress/results/*.json > ./cypress/results/report.json && npx marge ./cypress/results/report.json
