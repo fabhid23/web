@@ -45,7 +45,7 @@ jobs:
         run: npx cypress --version
 
       - name: List files
-        run: pwd
+        run: cd .. && pwd
 
       - name: rodando com electron 
         run: npx cypress run --browser=electron
