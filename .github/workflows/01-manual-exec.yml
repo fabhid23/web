@@ -21,31 +21,19 @@ jobs:
     steps:
 
       - uses: actions/checkout@v4
-        with:
-          path: ~/.cache/Cypress
-          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-cypress-
 
       # - uses: actions/setup-node@v4
       #   with:
       #     node-version: lts/*
 
-
       - name: Instalando cypress
-        run: npm install -D cypress@13.7.3
-
-      - name: Install Cypress binary
-        run: npx cypress install
-
-      - name: Set permissions
-        run: chmod +x node_modules/.bin/cypress
+        run: npm install
 
       - name: Check Cypress version
         run: npx cypress --version
 
       - name: rodando com electron 
-        run: cd .. && npx cypress run --browser=electron
+        run: npx cypress run --browser=electron
 
       - name: Generate Mochawesome Report
         run: npx mochawesome-merge ./cypress/results/*.json > ./cypress/results/report.json && npx marge ./cypress/results/report.json
