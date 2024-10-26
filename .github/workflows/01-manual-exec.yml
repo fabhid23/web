@@ -34,8 +34,8 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: relatorio-de-testes
-          rimraf: /mochawesome-report
           path: ./mochawesome-report
+          rimraf: /mochawesome-report
           
 
       
