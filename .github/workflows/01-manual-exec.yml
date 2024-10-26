@@ -24,6 +24,9 @@ jobs:
         run: npm install
         timeout-minutes: 3
 
+      - name: Limpar Relatórios Anteriores
+        run: rm -rf ./mochawesome-report/*
+
       - name: Executando E2E tests
         run: npx cypress run --browser=electron
         timeout-minutes: 10
@@ -35,7 +38,6 @@ jobs:
         with:
           name: relatorio-de-testes
           path: ./mochawesome-report
-          rimraf: /mochawesome-report
           
 
       
