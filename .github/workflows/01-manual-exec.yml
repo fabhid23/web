@@ -29,5 +29,8 @@ jobs:
       - name: Check Cypress version
         run: npx cypress --version
 
-      - name: rodando com electron
-        run: npx cypress run --browser=electron
+      - name: Executando E2E tests
+        run: npx cypress run --browser=eléctron
+        
+      - name: Generate Mochawesome Report
+        run: npx mochawesome-merge ./cypress/results/*.json > ./cypress/results/report.json && npx marge ./cypress/results/report.json
