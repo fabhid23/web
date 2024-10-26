@@ -1,25 +1,22 @@
 # CI de Nível 01 - Disparo manual a partir de 1 clique
 
 # nome que vai aparecer la nas opções de pipe
-name: 'Execução Manual'
+name: "Execução Manual"
 
 # regras de disparo da execucao (triggers/gatilhos)
 # gatilho de exec manual = workflow_dispatch
 
 on:
   workflow_dispatch:
-    
-jobs:
 
+jobs:
   # descricao do job
   e2e-tests:
-
     # maquina que o job vai executar
-    runs-on: ['ubuntu-latest']
+    runs-on: ["ubuntu-latest"]
 
     # passo a passo das acoes do job
     steps:
-
       - uses: actions/checkout@v4
 
       # - uses: actions/setup-node@v4
@@ -32,7 +29,7 @@ jobs:
       - name: Check Cypress version
         run: npx cypress --version
 
-      - name: rodando com electron 
+      - name: rodando com electron
         run: npx cypress run --browser=electron
 
       - name: Generate Mochawesome Report

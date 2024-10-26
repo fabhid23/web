@@ -4,7 +4,7 @@ import cadastro from '../pages/cadastro'
 import login from '../pages/login';
 import menu from '../pages/menu';
 import faleConosco from '../pages/FaleConosco';
-import produtos from '../pages/Produtos';
+import produtos from '../pages/produtos';
 import pagamento from '../pages/pagamento';
 
 describe('Automation Exercise', () => {
