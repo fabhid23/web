@@ -31,6 +31,3 @@ jobs:
 
       - name: rodando com electron
         run: npx cypress run --browser=electron
-
-      - name: Generate Mochawesome Report
-        run: npx mochawesome-merge ./cypress/results/*.json > ./cypress/results/report.json && npx marge ./cypress/results/report.json
