@@ -13,7 +13,7 @@ jobs:
   # descricao do job
   e2e-tests:
     # maquina que o job vai executar
-    runs-on: ["ubuntu-latest"]
+    runs-on: ubuntu-latest
     timeout-minutes: 3
 
     # passo a passo das acoes do job
@@ -22,10 +22,6 @@ jobs:
 
       - name: Instalando cypress
         run: npm install
-        timeout-minutes: 3
-
-      - name: Check Cypress version
-        run: npx cypress --version
         timeout-minutes: 3
 
       - name: Executando E2E tests
